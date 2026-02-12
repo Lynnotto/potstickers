@@ -2,7 +2,7 @@
 **Kai Lynn Wong**   
  wongkailynn@gmail.com • \+447825432254 
 
-*Education*
+**Education**
 **UNIVERSITY 	OF DUNDEE**						                                          Dundee, UK  
 Master’s by Research, Life Science  					                           Jan. 2024 \- May 2025                       
 
@@ -23,7 +23,7 @@ Transferred to University of Dundee after completing Year 1
 
 	      
 
-*Research Experience*
+**Research Experience**
 
 **Master’s by Research Project**                                                                                                              Dundee, UK  
 Supervisor: Dr Mattie C. Pawlowic 					                                    Jan. \- Dec. 2024
@@ -64,7 +64,7 @@ Bioinformatics Module                                                           
 * Using bioinformatic tools, I designed a PCR/digest experiment that allows identification of mammalian species from mitochondrial DNA.   
 * Learned basic command lines, basic Python3 and using Jalview software. 
 
-*Skills & Interests*
+**Skills & Interests**
 
 **Software:** Jalview, Python3, Prism, Snapgene   
 **Language:** Mandarin, Malay   
