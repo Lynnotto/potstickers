@@ -1,0 +1,161 @@
+---
+title: "Building This Website with Quarto"
+description: "How I converted my Jekyll CV site to a Quarto website with blog functionality"
+author: "Kai Lynn Wong"
+date: "2026-02-17"
+categories: [web-development, quarto, tutorial]
+draft: false
+---
+
+## Introduction
+
+Welcome to my first blog post! I recently migrated my personal website from Jekyll to Quarto, and I wanted to document the process for anyone interested in doing something similar. This post will walk through the motivation, implementation, and lessons learned along the way.
+
+## Why Quarto?
+
+My website initially started as a simple Jekyll site with the minimal theme, hosting just my CV. While Jekyll served its purpose well, I wanted to expand the site to include a blog for sharing research insights, coding projects, and other interests. After exploring various options, I chose Quarto for several reasons:
+
+1. **Academic-Friendly**: Quarto is designed with scientific and technical publishing in mind, making it perfect for someone in research
+2. **Unified Tooling**: Unlike Jekyll which requires Ruby, Quarto uses a single tool for website generation, documents, presentations, and more
+3. **Modern Features**: Built-in support for blogs, RSS feeds, and easy navigation
+4. **Markdown Compatible**: My existing CV content required minimal changes
+5. **Active Development**: Quarto is actively maintained by Posit (formerly RStudio) with excellent documentation
+
+## The Migration Process
+
+### Step 1: Converting from Jekyll
+
+The first step was converting my existing Jekyll site to Quarto. This involved:
+
+- Creating `_quarto.yml` configuration file to define the site structure
+- Renaming `index.md` to `index.qmd` and adding YAML front matter
+- Removing the old `_config.yml` Jekyll configuration
+
+The CV content itself needed almost no changes - just adding a simple front matter block:
+
+```yaml
+---
+title: "Kai Lynn Wong"
+page-layout: full
+toc: false
+---
+```
+
+### Step 2: Setting Up the Blog Structure
+
+Quarto makes blog setup straightforward. I created:
+
+1. **Blog Listing Page** (`blog.qmd`): A page that automatically discovers and displays all blog posts
+2. **Posts Directory** (`posts/`): Where all blog posts live, each in its own folder
+3. **Metadata File** (`posts/_metadata.yml`): Default settings applied to all posts
+
+The blog listing configuration uses Quarto's built-in listing feature:
+
+```yaml
+---
+title: "Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  feed:
+    type: full
+---
+```
+
+This automatically:
+- Discovers all posts in the `posts/` directory
+- Sorts them by date (newest first)
+- Enables category filtering
+- Generates an RSS feed for subscribers
+
+### Step 3: Configuring GitHub Actions
+
+The final piece was setting up automatic deployment to GitHub Pages. I created a GitHub Actions workflow (`.github/workflows/publish.yml`) that:
+
+1. Checks out the repository
+2. Installs Quarto using the official `quarto-dev/quarto-actions/setup@v2` action
+3. Renders the site with `quarto render`
+4. Uploads the built site as an artifact
+5. Deploys to GitHub Pages
+
+The workflow uses the artifact-based deployment approach, which is GitHub's current recommended method for Pages deployment. This provides better reliability and debugging compared to older approaches.
+
+## File Structure
+
+The final file structure is clean and organized:
+
+```
+/
+├── _quarto.yml              # Main configuration
+├── index.qmd                # CV homepage
+├── blog.qmd                 # Blog listing
+├── posts/                   # All blog posts
+│   ├── _metadata.yml        # Default post settings
+│   └── 2026-02-website-creation/
+│       └── index.qmd        # This post!
+└── .github/
+    └── workflows/
+        └── publish.yml      # Deployment automation
+```
+
+## Key Configuration Details
+
+### Navigation
+
+The `_quarto.yml` file defines a navigation bar with:
+- Home (CV) and Blog links
+- GitHub and email icons for easy contact
+- Clean, professional appearance using the Cosmo theme
+
+### Styling
+
+I chose the `cosmo` theme for its clean, modern look that's similar to the Jekyll minimal theme I was using before. The `page-layout: full` setting gives the CV maximum width for better readability.
+
+### Blog Posts
+
+Each blog post lives in its own directory (e.g., `posts/2026-02-website-creation/`), which makes it easy to:
+- Include post-specific images
+- Keep related resources together
+- Maintain a clean, organized structure
+
+## Lessons Learned
+
+1. **Quarto Documentation is Excellent**: The official Quarto documentation is comprehensive and well-organized. I found answers to almost every question there.
+
+2. **GitHub Actions Setup is Critical**: Make sure to configure your GitHub repository settings correctly - set Pages source to "GitHub Actions" rather than "Deploy from a branch".
+
+3. **Local Testing Helps**: If you have Quarto installed locally, running `quarto preview` before pushing helps catch issues early.
+
+4. **Minimal Migration Required**: The actual content migration was surprisingly simple - most of the work was in setting up the new structure and configuration.
+
+## Adding New Blog Posts
+
+For future reference (and for anyone following along), here's how to add a new blog post:
+
+1. Create a new directory: `posts/YYYY-MM-post-title/`
+2. Create `index.qmd` in that directory
+3. Add YAML front matter with title, date, description, and categories
+4. Write your content in Markdown
+5. Commit and push to main branch
+6. GitHub Actions automatically builds and deploys
+
+## What's Next
+
+Now that the infrastructure is in place, I'm excited to start sharing more content. I plan to write about:
+
+- Research projects and findings from my work on *Cryptosporidium*
+- Coding projects and tools I'm building
+- Bioinformatics techniques and workflows
+- Tips and tricks for lab work and molecular biology
+
+## Conclusion
+
+Migrating from Jekyll to Quarto was a smooth process that took just a few hours. The result is a professional, modern website that serves both as a CV and a platform for sharing ideas. If you're considering a similar migration, I highly recommend Quarto - especially if you're in research or technical fields.
+
+The entire source code for this website is available on [GitHub](https://github.com/Lynnotto/potstickers-), so feel free to check it out if you want to see the implementation details or use it as a template for your own site.
+
+---
+
+Thanks for reading my first blog post! If you have questions or suggestions, feel free to reach out via email.
