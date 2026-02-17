@@ -1,0 +1,94 @@
+/* Custom colorful styling for Kai Lynn Wong's website */
+
+/* Main headings - gradient colors */
+h1 {
+  color: #2E86AB;
+  font-weight: bold;
+}
+
+h2 {
+  color: #A23B72;
+  font-weight: bold;
+}
+
+h3 {
+  color: #F18F01;
+}
+
+h4 {
+  color: #C73E1D;
+}
+
+/* Strong/bold text - purple accent */
+strong {
+  color: #6A4C93;
+  font-weight: bold;
+}
+
+/* Links - teal color with hover effect */
+a {
+  color: #06A77D;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #048A63;
+  text-decoration: underline;
+}
+
+/* Navbar links - white on colored background */
+.navbar a {
+  color: white !important;
+}
+
+/* List items - dark blue */
+li {
+  color: #264653;
+}
+
+/* Emphasize italic text */
+em {
+  color: #E76F51;
+  font-style: italic;
+}
+
+/* Code blocks - green accent */
+code {
+  color: #2A9D8F;
+  background-color: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* Blog post titles in listing */
+.quarto-listing .listing-item h3 {
+  color: #1982C4;
+}
+
+/* Blog post descriptions */
+.quarto-listing .listing-item .description {
+  color: #555;
+}
+
+/* Category badges */
+.quarto-category {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+}
+
+/* Page title */
+.title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Footer styling */
+footer {
+  color: #555;
+}
+
+footer a {
+  color: #06A77D;
+}
